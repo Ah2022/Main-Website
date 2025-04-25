@@ -3,7 +3,7 @@ import { services } from "@/data/services";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-muted/50">
+    <section id="services" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

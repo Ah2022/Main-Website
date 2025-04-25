@@ -46,7 +46,6 @@ export default function ContactForm() {
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
-        variant: "default",
       });
       
       form.reset();
@@ -67,11 +66,10 @@ export default function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-slate-700 dark:text-slate-300">Name</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="Your name" 
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition duration-200" 
                     {...field} 
                   />
                 </FormControl>
@@ -85,12 +83,11 @@ export default function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-slate-700 dark:text-slate-300">Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="your.email@example.com" 
                     type="email"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition duration-200" 
                     {...field} 
                   />
                 </FormControl>
@@ -105,11 +102,10 @@ export default function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-medium text-slate-700 dark:text-slate-300">Subject</FormLabel>
+              <FormLabel>Subject</FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Subject of your message" 
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition duration-200" 
                   {...field} 
                 />
               </FormControl>
@@ -123,12 +119,12 @@ export default function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-medium text-slate-700 dark:text-slate-300">Message</FormLabel>
+              <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea 
                   placeholder="Your message here..." 
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition duration-200 resize-none" 
+                  className="resize-none" 
                   {...field} 
                 />
               </FormControl>
@@ -137,15 +133,11 @@ export default function ContactForm() {
           )}
         />
         
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+        <motion.div className="flex justify-end" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
           <Button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full sm:w-auto px-6 py-3 font-medium rounded-lg transition duration-300 shadow-lg hover:shadow-xl ${
-              isSubmitted
-                ? "bg-green-600 hover:bg-green-700"
-                : "bg-primary-600 hover:bg-primary-700"
-            }`}
+            className={`btn ${isSubmitted ? "bg-green-600 hover:bg-green-700 text-white" : "btn-primary"}`}
           >
             {isSubmitting ? (
               <>
