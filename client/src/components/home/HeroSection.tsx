@@ -74,7 +74,7 @@ export default function HeroSection() {
           >
             <div className="relative w-full aspect-square max-w-md mx-auto lg:ml-auto rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="/assets/profile.png" 
+                src="./assets/profile.png" 
                 alt="Ahmed Hisham - Mechatronics & Robotics Engineer" 
                 className="w-full h-full object-cover"
               />

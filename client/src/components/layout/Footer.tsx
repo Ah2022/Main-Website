@@ -22,7 +22,7 @@ export default function Footer() {
               className="flex items-center"
             >
               <div className="w-10 mr-2">
-                <img src="/assets/logo.png" alt="Ahmed Hisham Logo" className="w-full h-auto" />
+                <img src="./assets/logo.png" alt="Ahmed Hisham Logo" className="w-full h-auto" />
               </div>
               <span className="font-bold text-lg">Ahmed Hisham</span>
             </a>
