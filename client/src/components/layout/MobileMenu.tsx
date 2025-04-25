@@ -16,7 +16,7 @@ export default function MobileMenu({ isOpen, activeSection, navItems, onNavItemC
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700"
+          className="md:hidden bg-background border-b border-border"
         >
           <div className="container mx-auto px-4 py-3">
             <ul className="space-y-3">
@@ -29,11 +29,14 @@ export default function MobileMenu({ isOpen, activeSection, navItems, onNavItemC
                 >
                   <a
                     href={`#${item.id}`}
-                    onClick={() => onNavItemClick(item.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavItemClick(item.id);
+                    }}
                     className={`block py-2 px-3 rounded-md ${
                       activeSection === item.id
-                        ? "bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-medium"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50"
+                        ? "bg-primary/10 text-primary font-medium"
+                        : "text-muted-foreground hover:bg-muted"
                     }`}
                   >
                     {item.label}

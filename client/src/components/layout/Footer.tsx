@@ -1,4 +1,5 @@
 import { scrollToSection } from "@/lib/utils";
+import { socialLinks } from "@/data/social";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,53 +9,39 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 text-white py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-muted/30 border-t border-border py-12">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <a href="#home" onClick={() => scrollToSection("home")} className="text-2xl font-bold text-white">
-              <span className="font-mono">&lt;</span>Jane Doe<span className="font-mono">/&gt;</span>
+            <a 
+              href="#home" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("home");
+              }} 
+              className="flex items-center"
+            >
+              <div className="w-10 mr-2">
+                <img src="/assets/logo.png" alt="Ahmed Hisham Logo" className="w-full h-auto" />
+              </div>
+              <span className="font-bold text-lg">Ahmed Hisham</span>
             </a>
-            <p className="mt-4 text-slate-400 max-w-md">
-              A software engineer specializing in interactive web applications and creative animations.
+            <p className="mt-4 text-muted-foreground max-w-md">
+              A Mechatronics & Robotics Engineer specializing in automation, computer vision, and AI-driven solutions for complex industrial applications.
             </p>
             <div className="mt-6 flex space-x-5">
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-slate-400 hover:text-white transition duration-300"
-                aria-label="GitHub Profile"
-              >
-                <i className="fab fa-github text-xl"></i>
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-slate-400 hover:text-white transition duration-300"
-                aria-label="LinkedIn Profile"
-              >
-                <i className="fab fa-linkedin text-xl"></i>
-              </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-slate-400 hover:text-white transition duration-300"
-                aria-label="Twitter Profile"
-              >
-                <i className="fab fa-twitter text-xl"></i>
-              </a>
-              <a 
-                href="https://codepen.io" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-slate-400 hover:text-white transition duration-300"
-                aria-label="CodePen Profile"
-              >
-                <i className="fab fa-codepen text-xl"></i>
-              </a>
+              {socialLinks.map((link) => (
+                <a 
+                  key={link.name}
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-muted-foreground hover:text-primary transition duration-300"
+                  aria-label={`${link.name} Profile`}
+                >
+                  <i className={`${link.icon} text-xl`}></i>
+                </a>
+              ))}
             </div>
           </div>
           
@@ -64,17 +51,35 @@ export default function Footer() {
               <li>
                 <a 
                   href="#home" 
-                  onClick={() => scrollToSection("home")} 
-                  className="text-slate-400 hover:text-white transition duration-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("home");
+                  }} 
+                  className="text-muted-foreground hover:text-primary transition duration-300"
                 >
                   Home
                 </a>
               </li>
               <li>
                 <a 
+                  href="#services" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("services");
+                  }} 
+                  className="text-muted-foreground hover:text-primary transition duration-300"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a 
                   href="#projects" 
-                  onClick={() => scrollToSection("projects")} 
-                  className="text-slate-400 hover:text-white transition duration-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("projects");
+                  }} 
+                  className="text-muted-foreground hover:text-primary transition duration-300"
                 >
                   Projects
                 </a>
@@ -82,8 +87,11 @@ export default function Footer() {
               <li>
                 <a 
                   href="#about" 
-                  onClick={() => scrollToSection("about")} 
-                  className="text-slate-400 hover:text-white transition duration-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("about");
+                  }} 
+                  className="text-muted-foreground hover:text-primary transition duration-300"
                 >
                   About
                 </a>
@@ -91,8 +99,11 @@ export default function Footer() {
               <li>
                 <a 
                   href="#contact" 
-                  onClick={() => scrollToSection("contact")} 
-                  className="text-slate-400 hover:text-white transition duration-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("contact");
+                  }} 
+                  className="text-muted-foreground hover:text-primary transition duration-300"
                 >
                   Contact
                 </a>
@@ -104,25 +115,21 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <i className="fas fa-envelope text-primary-500 mt-1 mr-2"></i>
-                <span className="text-slate-400">jane.doe@example.com</span>
-              </li>
-              <li className="flex items-start">
-                <i className="fas fa-map-marker-alt text-primary-500 mt-1 mr-2"></i>
-                <span className="text-slate-400">San Francisco, CA</span>
+                <i className="fas fa-envelope text-primary mt-1 mr-2"></i>
+                <span className="text-muted-foreground">ahmed.hisham2000.ah@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-slate-500">
-            &copy; {currentYear} Jane Doe. All rights reserved.
+        <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center">
+          <p className="text-muted-foreground">
+            &copy; {currentYear} Ahmed Hisham. All rights reserved.
           </p>
           <div className="mt-4 sm:mt-0">
             <button 
               onClick={handleScrollToTop}
-              className="px-4 py-2 text-sm text-slate-400 hover:text-white transition duration-300 focus:outline-none"
+              className="px-4 py-2 text-sm text-muted-foreground hover:text-primary transition duration-300 focus:outline-none"
               aria-label="Scroll to top"
             >
               <i className="fas fa-arrow-up mr-2"></i>

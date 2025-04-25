@@ -3,31 +3,53 @@ import { skills } from "@/data/skills";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-slate-50 dark:bg-slate-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A passion for combining robotics, automation, and intelligent systems to solve real-world challenges.
+          </p>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
             className="order-2 lg:order-1"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 mb-6">
-              I'm a software engineer with a passion for creating interactive, user-focused web applications. With expertise in front-end development and interactive animations, I bridge the gap between technical functionality and engaging user experiences.
-            </p>
-            <p className="text-lg text-slate-700 dark:text-slate-300 mb-6">
-              My background in both design and engineering allows me to approach problems holistically, creating solutions that are both technically robust and aesthetically pleasing.
-            </p>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p>
+                I'm a Mechatronics & Robotics Engineer specializing in automation and AI-driven solutions for 
+                complex industrial applications. My expertise spans robotics, computer vision, and embedded systems 
+                engineering.
+              </p>
+              <p>
+                With a background in both mechanical and software engineering, I approach problems holistically, 
+                creating solutions that are both technically robust and highly efficient. I'm passionate about 
+                applying cutting-edge technologies to solve real-world challenges in automation and manufacturing.
+              </p>
+            </div>
             
-            <h3 className="text-xl font-bold mt-10 mb-4">My Skills</h3>
+            <h3 className="text-xl font-bold mt-10 mb-4">Technical Skills</h3>
             <div className="flex flex-wrap gap-3 mb-8">
-              {skills.map((skill) => (
+              {skills.map((skill, index) => (
                 <motion.span 
                   key={skill} 
-                  className="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-full text-sm font-medium"
-                  whileHover={{ scale: 1.05, backgroundColor: "#3b82f6", color: "#ffffff" }}
+                  className="px-3 py-1.5 bg-muted text-foreground rounded-full text-sm font-medium"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
+                  whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
                 >
                   {skill}
                 </motion.span>
@@ -35,13 +57,17 @@ export default function AboutSection() {
             </div>
             
             <motion.a
-              href="#"
-              className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="btn btn-primary mt-4"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <i className="fas fa-file-alt mr-2"></i>
-              Download Resume
+              <i className="fas fa-paper-plane mr-2"></i>
+              Get In Touch
             </motion.a>
           </motion.div>
           
@@ -49,43 +75,63 @@ export default function AboutSection() {
             className="order-1 lg:order-2"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Developer working on code" 
-                className="w-full h-auto"
-              />
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <motion.div 
-                className="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-lg"
-                whileHover={{ y: -5 }}
-              >
-                <div className="text-primary-600 dark:text-primary-400 mb-2">
-                  <i className="fas fa-code text-2xl"></i>
-                </div>
-                <h3 className="text-lg font-bold mb-1">Front-End Focus</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Creating responsive, accessible, and performant interfaces
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-lg"
-                whileHover={{ y: -5 }}
-              >
-                <div className="text-secondary-500 mb-2">
-                  <i className="fas fa-lightbulb text-2xl"></i>
-                </div>
-                <h3 className="text-lg font-bold mb-1">Creative Problem Solver</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Finding innovative solutions to technical challenges
-                </p>
-              </motion.div>
+            <div className="rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-primary/10 to-primary/5 p-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <motion.div 
+                  className="bg-card p-5 rounded-xl shadow-md"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="text-primary mb-4">
+                    <i className="fas fa-robot text-3xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Robotics Focus</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Design and implementation of autonomous robotics systems for industrial applications
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-card p-5 rounded-xl shadow-md"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="text-primary mb-4">
+                    <i className="fas fa-microchip text-3xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Embedded Systems</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Developing specialized computing systems for mechanical and electrical applications
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-card p-5 rounded-xl shadow-md"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="text-primary mb-4">
+                    <i className="fas fa-eye text-3xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Computer Vision</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Building vision systems that enable machines to perceive and analyze their environment
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-card p-5 rounded-xl shadow-md"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="text-primary mb-4">
+                    <i className="fas fa-brain text-3xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">AI Integration</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Implementing machine learning algorithms to enhance automation with intelligent capabilities
+                  </p>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>

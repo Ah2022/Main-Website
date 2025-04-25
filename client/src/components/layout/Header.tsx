@@ -10,6 +10,7 @@ interface HeaderProps {
 
 const navItems = [
   { id: "home", label: "Home" },
+  { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
   { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
@@ -39,11 +40,11 @@ export default function Header({ activeSection }: HeaderProps) {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 bg-background/90 backdrop-blur-md border-b border-border z-50 transition-all duration-300 ${
         isScrolled ? "shadow-md" : ""
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between h-16">
           <motion.div 
             className="flex items-center"
@@ -51,8 +52,14 @@ export default function Header({ activeSection }: HeaderProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <a href="#home" onClick={() => handleNavClick("home")} className="flex items-center text-primary-600 dark:text-primary-400 font-bold text-xl">
-              <span className="font-mono mr-2">&lt;</span>Jane Doe<span className="font-mono ml-2">/&gt;</span>
+            <a href="#home" onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("home");
+            }} className="flex items-center">
+              <div className="w-10 mr-2">
+                <img src="/assets/logo.png" alt="Ahmed Hisham Logo" className="w-full h-auto" />
+              </div>
+              <span className="font-bold text-lg">Ahmed Hisham</span>
             </a>
           </motion.div>
           
@@ -67,11 +74,14 @@ export default function Header({ activeSection }: HeaderProps) {
                 <li key={item.id}>
                   <a 
                     href={`#${item.id}`}
-                    onClick={() => handleNavClick(item.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.id);
+                    }}
                     className={`transition duration-300 ${
                       activeSection === item.id
-                        ? "text-primary-600 dark:text-primary-400 font-medium"
-                        : "text-slate-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400"
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground hover:text-primary"
                     }`}
                   >
                     {item.label}
@@ -87,7 +97,7 @@ export default function Header({ activeSection }: HeaderProps) {
             <button 
               aria-label="Toggle mobile menu"
               onClick={toggleMobileMenu}
-              className="ml-2 p-2 rounded-md text-slate-600 hover:text-primary-500 dark:text-slate-400 dark:hover:text-primary-400 md:hidden focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="ml-2 p-2 rounded-md text-muted-foreground hover:text-primary md:hidden focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-lg`}></i>
             </button>
