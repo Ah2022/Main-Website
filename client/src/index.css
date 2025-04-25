@@ -3,49 +3,89 @@
 @tailwind utilities;
 
 :root {
-      --background: 0 0% 100%;
---foreground: 20 14.3% 4.1%;
---muted: 60 4.8% 95.9%;
---muted-foreground: 25 5.3% 44.7%;
---popover: 0 0% 100%;
---popover-foreground: 20 14.3% 4.1%;
---card: 0 0% 100%;
---card-foreground: 20 14.3% 4.1%;
---border: 20 5.9% 90%;
---input: 20 5.9% 90%;
---primary: 207 90% 54%;
---primary-foreground: 211 100% 99%;
---secondary: 60 4.8% 95.9%;
---secondary-foreground: 24 9.8% 10%;
---accent: 60 4.8% 95.9%;
---accent-foreground: 24 9.8% 10%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 60 9.1% 97.8%;
---ring: 20 14.3% 4.1%;
---radius: 0.5rem;
-  }
-  .dark {
-      --background: 240 10% 3.9%;
---foreground: 0 0% 98%;
---muted: 240 3.7% 15.9%;
---muted-foreground: 240 5% 64.9%;
---popover: 240 10% 3.9%;
---popover-foreground: 0 0% 98%;
---card: 240 10% 3.9%;
---card-foreground: 0 0% 98%;
---border: 240 3.7% 15.9%;
---input: 240 3.7% 15.9%;
---primary: 207 90% 54%;
---primary-foreground: 211 100% 99%;
---secondary: 240 3.7% 15.9%;
---secondary-foreground: 0 0% 98%;
---accent: 240 3.7% 15.9%;
---accent-foreground: 0 0% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 0 0% 98%;
---ring: 240 4.9% 83.9%;
---radius: 0.5rem;
-  }
+  /* Base colors */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 4%;
+  
+  /* Card and UI elements */
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
+  --card-hover: 220 14% 96%;
+  
+  /* Muted tones */
+  --muted: 220 14% 96%;
+  --muted-foreground: 240 5% 45%;
+  
+  /* UI element states */
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 4%;
+  
+  /* Borders and inputs */
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  
+  /* Primary brand color - using blue to match tech/robotics */
+  --primary: 214 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* Accent colors */
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 214 80% 35%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 214 80% 35%;
+  
+  /* Status colors */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 100%;
+  
+  /* Interactive elements */
+  --ring: 214 100% 50%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Base colors (dark mode) */
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  
+  /* Card and UI elements */
+  --card: 240 10% 7%;
+  --card-foreground: 0 0% 98%;
+  --card-hover: 240 10% 10%;
+  
+  /* Muted tones */
+  --muted: 240 6% 15%;
+  --muted-foreground: 240 5% 65%;
+  
+  /* UI element states */
+  --popover: 240 10% 7%;
+  --popover-foreground: 0 0% 98%;
+  
+  /* Borders and inputs */
+  --border: 240 6% 15%;
+  --input: 240 6% 15%;
+  
+  /* Primary brand color - brighter in dark mode */
+  --primary: 214 100% 58%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* Accent colors */
+  --secondary: 240 6% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 6% 15%;
+  --accent-foreground: 0 0% 98%;
+  
+  /* Status colors */
+  --destructive: 0 74% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 98%;
+  
+  /* Interactive elements */
+  --ring: 214 100% 58%;
+}
 
 @layer base {
   * {
@@ -55,5 +95,112 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Typography styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+  
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Link transitions */
+  a {
+    @apply transition-colors duration-200;
+  }
+  
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  
+  .btn-outline {
+    @apply border border-input hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  /* Container padding */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Project card styles */
+.project-card {
+  @apply rounded-xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.project-card:hover {
+  @apply -translate-y-1;
+}
+
+/* Service card styles */
+.service-card {
+  @apply rounded-xl overflow-hidden bg-card border border-border p-6 transition-all duration-300;
+}
+
+.service-card:hover {
+  @apply shadow-md bg-muted -translate-y-1;
+}
+
+/* Icon styles */
+.icon-container {
+  @apply flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary;
+}

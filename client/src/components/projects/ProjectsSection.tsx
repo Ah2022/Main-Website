@@ -4,18 +4,18 @@ import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-slate-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Explore my recent work featuring interactive animations and modern web technologies.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Showcasing my work in automation, robotics, and AI-driven solutions for complex industrial challenges.
           </p>
         </motion.div>
 
@@ -25,7 +25,7 @@ export default function ProjectsSection() {
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <ProjectCard project={project} />
@@ -37,14 +37,14 @@ export default function ProjectsSection() {
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <a 
-            href="https://github.com" 
+            href="https://github.com/Ah2022" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="inline-flex items-center px-6 py-3 bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-medium rounded-lg transition duration-300"
+            className="btn btn-outline"
           >
             <i className="fab fa-github mr-2"></i>
             View More on GitHub

@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ProjectsSection from "@/components/projects/ProjectsSection";
+import ServicesSection from "@/components/services/ServicesSection";
 import AboutSection from "@/components/about/AboutSection";
 import ContactSection from "@/components/contact/ContactSection";
 import { getActiveSection } from "@/lib/utils";
@@ -27,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header activeSection={activeSection} />
       
       <main className="flex-grow">
@@ -39,6 +40,7 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <HeroSection />
+            <ServicesSection />
             <ProjectsSection />
             <AboutSection />
             <ContactSection />
