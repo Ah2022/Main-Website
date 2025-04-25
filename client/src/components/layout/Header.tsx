@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
 import { scrollToSection } from "@/lib/utils";
+import logoImg from "/assets/logo.png";
 
 interface HeaderProps {
   activeSection: string;
@@ -57,7 +58,7 @@ export default function Header({ activeSection }: HeaderProps) {
               handleNavClick("home");
             }} className="flex items-center">
               <div className="w-10 mr-2">
-                <img src="./assets/logo.png" alt="Ahmed Hisham Logo" className="w-full h-auto" />
+                <img src={logoImg} alt="Ahmed Hisham Logo" className="w-full h-auto" />
               </div>
               <span className="font-bold text-lg">Ahmed Hisham</span>
             </a>

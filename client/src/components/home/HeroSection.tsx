@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { scrollToSection } from "@/lib/utils";
 import { socialLinks } from "@/data/social";
+import profileImg from "/assets/profile.png";
 
 export default function HeroSection() {
   return (
@@ -74,7 +75,7 @@ export default function HeroSection() {
           >
             <div className="relative w-full aspect-square max-w-md mx-auto lg:ml-auto rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="./assets/profile.png" 
+                src={profileImg} 
                 alt="Ahmed Hisham - Mechatronics & Robotics Engineer" 
                 className="w-full h-full object-cover"
               />
