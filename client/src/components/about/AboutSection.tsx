@@ -92,27 +92,6 @@ export default function AboutSection() {
                 <div className="absolute -bottom-12 -left-12 w-32 h-32 rounded-full bg-primary/10 z-0"></div>
               </div>
 
-              <div className="mt-8 text-center lg:text-left">
-                <h3 className="text-2xl font-bold mb-4">My Expertise</h3>
-                <p className="text-muted-foreground">
-                  With a background in both mechanical and software engineering, I create solutions 
-                  that are technically robust and highly efficient. My work combines cutting-edge 
-                  technologies to solve real-world challenges in automation and manufacturing.
-                </p>
-                <motion.a
-                  href="#projects"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="btn btn-outline mt-6 inline-block"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <i className="fas fa-project-diagram mr-2"></i>
-                  View Projects
-                </motion.a>
-              </div>
             </div>
           </motion.div>
         </div>
