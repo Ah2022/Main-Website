@@ -8,7 +8,7 @@ import ServicesSection from "@/components/services/ServicesSection";
 import AboutSection from "@/components/about/AboutSection";
 import ContactSection from "@/components/contact/ContactSection";
 import { getActiveSection } from "@/lib/utils";
-import EntrancePage from "@/pages/entrance";
+import EntrancePage from "@/pages/entrance.tsx";
 
 function App() {
   const [activeSection, setActiveSection] = useState<string>("home");
