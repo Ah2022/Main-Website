@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { scrollToSection } from "@/lib/utils";
 import { socialLinks } from "@/data/social";
-import profileImg from "/assets/profile.png";
+import { useState } from "react";
+import Spline from '@splinetool/react-spline';
 
 export default function HeroSection() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <section id="home" className="min-h-screen pt-24 pb-16 flex items-center">
       <div className="container mx-auto px-4">
@@ -66,7 +69,7 @@ export default function HeroSection() {
               ))}
             </div>
           </motion.div>
-          
+
           <motion.div
             className="order-1 lg:order-2"
             initial={{ opacity: 0 }}
@@ -74,11 +77,21 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="relative w-full aspect-square max-w-md mx-auto lg:ml-auto rounded-2xl overflow-hidden shadow-xl">
-              <img 
-                src={profileImg} 
-                alt="Ahmed Hisham - Mechatronics & Robotics Engineer" 
-                className="w-full h-full object-cover"
-              />
+              {/* Loading indicator */}
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center z-10 bg-background/50">
+                  <div className="w-12 h-12 border-4 border-t-primary border-opacity-50 rounded-full animate-spin"></div>
+                </div>
+              )}
+
+              {/* Spline animation */}
+              <div className="w-full h-full">
+                <Spline
+                  scene="https://prod.spline.design/qHG1YfjVpW1ewUVA/scene.splinecode"
+                  onLoad={() => setIsLoading(false)}
+                />
+              </div>
+
               {/* Decorative elements */}
               <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-primary/20 z-0"></div>
               <div className="absolute -bottom-12 -left-12 w-32 h-32 rounded-full bg-primary/10 z-0"></div>
