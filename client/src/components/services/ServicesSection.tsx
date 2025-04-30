@@ -32,7 +32,7 @@ export default function ServicesSection() {
                 <i className={`${service.icon} text-xl`}></i>
               </div>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground text-sm">{service.description}</p>
+              <div className="text-muted-foreground text-sm whitespace-pre-line">{service.description}</div>
             </motion.div>
           ))}
         </div>
