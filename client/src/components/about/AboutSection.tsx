@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { skills } from "@/data/skills";
+import profileImg from "@assets/Profile pic.png";
 
 export default function AboutSection() {
   return (
@@ -38,7 +39,7 @@ export default function AboutSection() {
                 applying cutting-edge technologies to solve real-world challenges in automation and manufacturing.
               </p>
             </div>
-            
+
             <h3 className="text-xl font-bold mt-10 mb-4">Technical Skills</h3>
             <div className="flex flex-wrap gap-3 mb-8">
               {skills.map((skill, index) => (
@@ -55,7 +56,7 @@ export default function AboutSection() {
                 </motion.span>
               ))}
             </div>
-            
+
             <motion.a
               href="#contact"
               onClick={(e) => {
@@ -70,7 +71,7 @@ export default function AboutSection() {
               Get In Touch
             </motion.a>
           </motion.div>
-          
+
           <motion.div 
             className="order-1 lg:order-2"
             initial={{ opacity: 0, x: 30 }}
@@ -78,59 +79,39 @@ export default function AboutSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-primary/10 to-primary/5 p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <motion.div 
-                  className="bg-card p-5 rounded-xl shadow-md"
-                  whileHover={{ y: -5 }}
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative w-full aspect-square max-w-md mx-auto lg:ml-auto rounded-2xl overflow-hidden shadow-xl">
+                <img 
+                  src={profileImg} 
+                  alt="Ahmed Hisham - Mechatronics & Robotics Engineer" 
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Decorative elements */}
+                <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-primary/20 z-0"></div>
+                <div className="absolute -bottom-12 -left-12 w-32 h-32 rounded-full bg-primary/10 z-0"></div>
+              </div>
+
+              <div className="mt-8 text-center lg:text-left">
+                <h3 className="text-2xl font-bold mb-4">My Expertise</h3>
+                <p className="text-muted-foreground">
+                  With a background in both mechanical and software engineering, I create solutions 
+                  that are technically robust and highly efficient. My work combines cutting-edge 
+                  technologies to solve real-world challenges in automation and manufacturing.
+                </p>
+                <motion.a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="btn btn-outline mt-6 inline-block"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <div className="text-primary mb-4">
-                    <i className="fas fa-robot text-3xl"></i>
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">Robotics Focus</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Design and implementation of autonomous robotics systems for industrial applications
-                  </p>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-card p-5 rounded-xl shadow-md"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="text-primary mb-4">
-                    <i className="fas fa-microchip text-3xl"></i>
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">Embedded Systems</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Developing specialized computing systems for mechanical and electrical applications
-                  </p>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-card p-5 rounded-xl shadow-md"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="text-primary mb-4">
-                    <i className="fas fa-eye text-3xl"></i>
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">Computer Vision</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Building vision systems that enable machines to perceive and analyze their environment
-                  </p>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-card p-5 rounded-xl shadow-md"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="text-primary mb-4">
-                    <i className="fas fa-brain text-3xl"></i>
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">AI Integration</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Implementing machine learning algorithms to enhance automation with intelligent capabilities
-                  </p>
-                </motion.div>
+                  <i className="fas fa-project-diagram mr-2"></i>
+                  View Projects
+                </motion.a>
               </div>
             </div>
           </motion.div>
